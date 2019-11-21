@@ -59,6 +59,7 @@ class NavBar extends Component {
           )}
           {authenticated ? (
             <SignedInMenu
+              auth={auth}
               signOut={this.handleSignOut}
               profile={profile}
             />
@@ -74,11 +75,4 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(
-  withFirebase(
-    connect(
-      mapState,
-      actions
-    )(NavBar)
-  )
-);
+export default withRouter(withFirebase(connect(mapState, actions)(NavBar)));
